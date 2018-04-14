@@ -1,0 +1,18 @@
+﻿{
+	"name": "Toggle-HUD",
+	"description": "The HUD will not disappear automatically after some time, but stay until you disable it again.",
+	"url": "https://github.com/WulfMarius/Toggle-HUD",
+	"releases": [
+		{
+			"version": "2.0.0",
+			"url": "https://github.com/WulfMarius/Toggle-HUD/releases/tag/2.0.0",
+			"changes": "the HUD will not disappear after time and re-appear when it was closed by other UI elements",
+			"dependencies": [],
+			"assets": [
+				{
+					"url": "https://github.com/WulfMarius/Toggle-HUD/releases/download/2.0.0/Toggle-HUD-V2.0.0.zip"
+				}
+			]
+		}
+	]
+}
