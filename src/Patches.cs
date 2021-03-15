@@ -9,7 +9,7 @@ namespace ToggleHUD
         {
             if (Implementation.ShowHUD
                 && !InterfaceManager.m_Panel_Actions.IsEnabled()
-                && !InterfaceManager.IsOverlayActive()
+                && !InterfaceManager.IsOverlayActiveImmediate()
                 && !InterfaceManager.m_Panel_HUD.m_EquipItemPopup.m_EquipPopupBottom.activeInHierarchy)
             {
                 Implementation.ReenableHUD();
@@ -22,6 +22,7 @@ namespace ToggleHUD
     {
         public static void Prefix(Panel_Actions __instance, bool enable)
         {
+            //MelonLoader.MelonLogger.Log("panel_actions enable");
             if (enable)
             {
                 Implementation.ToggleHUD();

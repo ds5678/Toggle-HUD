@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
+using MelonLoader;
 
 namespace ToggleHUD
 {
-    public class Implementation
+    public class Implementation : MelonMod
     {
         public static bool ShowHUD
         {
             get; private set;
         }
 
-        public static void OnLoad()
+        public override void OnApplicationStart()
         {
-            Debug.Log("[Toggle-HUD]: Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Debug.Log($"[{Info.Name}] Version {Info.Version} loaded!");
         }
 
         internal static void ReenableHUD()
