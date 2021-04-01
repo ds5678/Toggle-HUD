@@ -29,4 +29,16 @@ namespace ToggleHUD
             }
         }
     }
+
+    [HarmonyPatch(typeof(Panel_HUD), "UpdateStaminaBar")]
+    internal class Panel_HUD_UpdateStaminaBar
+    {
+        private static void Prefix(Panel_HUD __instance)
+        {
+            if (Implementation.ShowHUD)
+            {
+                __instance.m_SprintBar.alpha = 1f;
+            }
+        }
+    }
 }

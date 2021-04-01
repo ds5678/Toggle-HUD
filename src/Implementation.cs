@@ -32,6 +32,7 @@ namespace ToggleHUD
             {
                 ShowHUD = true;
                 InterfaceManager.m_Panel_Actions.m_FadeTime = float.PositiveInfinity;
+                InterfaceManager.m_Panel_HUD.m_SprintBar.alpha = 1f;
             }
         }
     }
