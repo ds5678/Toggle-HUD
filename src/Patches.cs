@@ -1,23 +1,23 @@
-﻿using Harmony;
+﻿using Il2Cpp;
 
 namespace ToggleHUD
 {
-    [HarmonyPatch(typeof(InputManager), "ProcessInput")]
+    [HarmonyLib.HarmonyPatch(typeof(InputManager), "ProcessInput")]
     internal class GameManager_Start
     {
         public static void Postfix()
         {
             if (Implementation.ShowHUD
-                && !InterfaceManager.m_Panel_Actions.IsEnabled()
+                && !InterfaceManager.GetPanel<Panel_Actions>().IsEnabled()
                 && !InterfaceManager.IsOverlayActiveImmediate()
-                && !InterfaceManager.m_Panel_HUD.m_EquipItemPopup.m_EquipPopupBottom.activeInHierarchy)
+                && !InterfaceManager.GetPanel<Panel_HUD>().m_EquipItemPopup.m_EquipPopupBottom.activeInHierarchy)
             {
                 Implementation.ReenableHUD();
             }
         }
     }
 
-    [HarmonyPatch(typeof(Panel_Actions), "Enable")]
+    [HarmonyLib.HarmonyPatch(typeof(Panel_Actions), "Enable")]
     internal class Panel_Actions_Enable
     {
         public static void Prefix(Panel_Actions __instance, bool enable)
@@ -30,7 +30,7 @@ namespace ToggleHUD
         }
     }
 
-    [HarmonyPatch(typeof(Panel_HUD), "UpdateStaminaBar")]
+    [HarmonyLib.HarmonyPatch(typeof(Panel_HUD), "UpdateStaminaBar")]
     internal class Panel_HUD_UpdateStaminaBar
     {
         private static void Prefix(Panel_HUD __instance)

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using MelonLoader;
+﻿using MelonLoader;
+using Il2Cpp;
 
 namespace ToggleHUD
 {
@@ -10,15 +10,15 @@ namespace ToggleHUD
             get; private set;
         }
 
-        public override void OnApplicationStart()
-        {
-            Debug.Log($"[{Info.Name}] Version {Info.Version} loaded!");
-        }
+        //public override void OnApplicationStart()
+        //{
+            //Debug.Log($"[{Info.Name}] Version {Info.Version} loaded!");
+        //}
 
         internal static void ReenableHUD()
         {
             ShowHUD = false;
-            InterfaceManager.m_Panel_Actions.Enable(true);
+            InterfaceManager.GetPanel<Panel_Actions>().Enable(true);
         }
 
         internal static void ToggleHUD()
@@ -26,13 +26,13 @@ namespace ToggleHUD
             if (ShowHUD)
             {
                 ShowHUD = false;
-                InterfaceManager.m_Panel_Actions.m_FadeTime = 1;
+                InterfaceManager.GetPanel<Panel_Actions>().m_FadeTime = 1;
             }
             else
             {
                 ShowHUD = true;
-                InterfaceManager.m_Panel_Actions.m_FadeTime = float.PositiveInfinity;
-                InterfaceManager.m_Panel_HUD.m_SprintBar.alpha = 1f;
+                InterfaceManager.GetPanel<Panel_Actions>().m_FadeTime = float.PositiveInfinity;
+                InterfaceManager.GetPanel<Panel_HUD>().m_SprintBar.alpha = 1f;
             }
         }
     }
